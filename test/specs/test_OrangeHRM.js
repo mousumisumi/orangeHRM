@@ -1,5 +1,6 @@
 import loginToOrangeHRM from "../pageobjects/login_Page_test.js";
 import createEmployee from "../pageobjects/create_newEmployee_test.js";
+import searchEmployee from "../pageobjects/searchEmployee.js";
 
 
 describe('Login Page', () => {
@@ -10,34 +11,19 @@ describe('Login Page', () => {
         await expect(browser).toHaveUrl("https://opensource-demo.orangehrmlive.com/web/index.php/dashboard/index")
     })
 
-    it('Create new Employee', async () => {
-        await createEmployee.clickPIM();
-        await createEmployee.clickAddonPIM()
-        await browser.pause()
-        await createEmployee.addEmployee("Mousumi","Akter","Sumi","0234")
+    // it('Create new Employee', async () => {
+    //     await createEmployee.clickPIM();
+    //     await createEmployee.clickAddonPIM()
+    //     await browser.pause(5000)
+    //     await createEmployee.addEmployee("Mousumi","Akter","Sumi","396")
+    //     await createEmployee.employeeValidation("Mousumi Sumi")
+    //     await browser.pause(5000)
+
+    // })
+    
+    it('Search Employee', async () => {
+        await searchEmployee.searchEmployeeAndValidate("0422396")
         await browser.pause(5000)
-
-        // const name;
-        // const firstName=faker.name.firstName();
-        // console.log(firstName)
-
-        // const onLogin = fn()
-        // render(<LoginForm onLogin={onLogin} />)
-        // await $('input[name="firstName"]').setValue('Akter')
-        // await $('input[name="middleName"]').setValue('Akter')
-        // await $('input[name="lastName"]').setValue('Sumi')
-        // await browser.keys(Key.Enter)
-
-        // /**
-        //  * verify the handler was called
-        //  */
-        // expect(onLogin).toBeCalledTimes(1)
-        // expect(onLogin).toBeCalledWith(expect.equal({
-        //     firstName: 'Akter',
-        //     middleName: 'Akter',
-        //     lastName: 'Sumi'
-        // })) 
-        
 
     })
 })

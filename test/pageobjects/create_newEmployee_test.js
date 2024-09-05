@@ -25,6 +25,10 @@ class createEmployee{
         return $("(//input[@class='oxd-input oxd-input--active'])[2]")
     }
 
+    get employeeID2(){
+        return $("(//input[@class='oxd-input oxd-input--active'])[2]")
+    }
+
     get clickToggle(){
         return $('//span[@class="oxd-switch-input oxd-switch-input--active --label-right"]')
     }
@@ -65,14 +69,22 @@ class createEmployee{
         await this.firstName.setValue(firstName)
         await this.middleName.setValue(middleName)
         await this.lastName.setValue(lastName)
-        await this.employeeID.setValue(employeeID)
+        const add= this.employeeID
+        await add.click()
+        await add.doubleClick()
+        await browser.pause(3000)
+        await browser.keys('Delete')
+        await browser.pause(3000)
+
+        await add.setValue(employeeID)
+        await browser.pause(3000)
+
         await this.clickToggle.click()   
-        await this.username.setValue("chuchu4321")
+        await this.username.setValue("iceCream012")
         await this.enabled.click()
         await this.password.setValue("abcd1234")
         await this.conPw.setValue("abcd1234")
         await this.submit.click()
-        await browser.pause(4000)
 
     
     }
@@ -82,6 +94,10 @@ class createEmployee{
         await expect(emplyeeAddedValidation).toHaveText(name)
         const url= await browser.getUrl()
         await expect(url).toContain("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewPersonalDetails/empNumber")
+        // const id= $("(//input[@class='oxd-input oxd-input--active'])[3]")
+        // const idValue=await id.getText()
+        // console.log(idValue)
+
 
     }
 

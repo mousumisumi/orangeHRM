@@ -20,7 +20,7 @@ async searchEmployeeAndValidate(number){
         await browser.url("https://opensource-demo.orangehrmlive.com/web/index.php/pim/viewEmployeeList")
         await this.searchEmployeeID.setValue(number)
         await this.submit.click()
-        const searchResult=$('div=0422396')
+        const searchResult=$('div=045')
         await searchResult.scrollIntoView()
         await expect(searchResult).toHaveText(number)
 
